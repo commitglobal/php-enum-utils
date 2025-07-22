@@ -4,10 +4,6 @@
 [![GitHub last commit][ico-last-commit]][link-last-commit]
 [![License: MPL 2.0][ico-license]][link-license]
 
-[![GitHub contributors][ico-contributors]][link-contributors]
-[![GitHub last commit][ico-last-commit]][link-last-commit]
-[![License: MPL 2.0][ico-license]][link-license]
-
 Collection of utilities for working with enums.
 
 [Contributing](#contributing) | [Feedback](#feedback) | [License](#license) | [About Code for Romania](#about-code-for-romania)

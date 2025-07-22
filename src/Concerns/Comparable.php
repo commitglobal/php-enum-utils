@@ -27,20 +27,4 @@ trait Comparable
     {
         return ! $this->is($enum);
     }
-
-    /**
-     * @deprecated Use `is()` instead.
-     */
-    public static function isValue(BackedEnum | string | int | null $subject, BackedEnum $enum): bool
-    {
-        if ($subject === null) {
-            return false;
-        }
-
-        if (! $subject instanceof self) {
-            $subject = self::tryFrom(\is_int($enum->value) ? (int) $subject : (string) $subject);
-        }
-
-        return $subject?->is($enum) ?? false;
-    }
 }
