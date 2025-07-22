@@ -2,13 +2,13 @@
 
 declare(strict_types=1);
 
-namespace CommitGlobal\Enums\Tests;
+namespace CommitGlobal\Enums\Tests\IntBackedEnum;
 
 use CommitGlobal\Enums\Tests\Fixtures\IntBackedEnum;
 use Orchestra\Testbench\TestCase;
 use PHPUnit\Framework\Attributes\Test;
 
-class ArrayableIntTest extends TestCase
+class ArrayableTest extends TestCase
 {
     #[Test]
     public function it_can_list_names_of_an_int_backed_enum(): void

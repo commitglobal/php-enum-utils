@@ -2,13 +2,13 @@
 
 declare(strict_types=1);
 
-namespace CommitGlobal\Enums\Tests;
+namespace CommitGlobal\Enums\Tests\StringBackedEnum;
 
 use CommitGlobal\Enums\Tests\Fixtures\StringBackedEnum;
 use Orchestra\Testbench\TestCase;
 use PHPUnit\Framework\Attributes\Test;
 
-class ArrayableStringTest extends TestCase
+class ArrayableTest extends TestCase
 {
     #[Test]
     public function it_can_list_names_of_a_string_backed_enum(): void
