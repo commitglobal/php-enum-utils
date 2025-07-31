@@ -6,7 +6,7 @@
 
 Collection of utilities for working with enums.
 
-[Contributing](#contributing) | [Feedback](#feedback) | [License](#license) | [About Code for Romania](#about-code-for-romania)
+[Contributing](#contributing) | [Install](#install) | [Usage](#usage) | [Feedback](#feedback) | [License](#license) | [About Code for Romania](#about-code-for-romania)
 
 ## Contributing
 
@@ -15,6 +15,76 @@ This project is built by amazing volunteers and you can be one of them! Here's a
 Help us out by testing this project in the [staging environment][link-staging]. If you see something that doesn't quite work the way you expect it to, open an Issue. Make sure to describe what you _expect to happen_ and _what is actually happening_ in detail.
 
 If you would like to suggest new functionality, open an Issue and mark it as a __[Feature request]__. Please be specific about why you think this functionality will be of use. If you can, please include some visual description of what you would like the UI to look like, if you are suggesting new UI elements.
+
+## Install
+
+```console
+composer require commitglobal/enum-utils
+```
+
+## Usage
+
+### Arrayable
+
+> [!important]
+> For `Arrayable::options()`, your enum must implement a `getLabel()` method.
+
+| Method      | Description                                            |
+| ----------- | ------------------------------------------------------ |
+| `names()`   | Returns an array of enum case names.                   |
+| `values()`  | Returns an array of enum case values.                  |
+| `options()` | Returns an associative array mapping values to labels. |
+
+```php
+enum Status: string
+{
+    use CommitGlobal\Enums\Concerns\Arrayable;
+
+    case ACTIVE = 'active';
+    case INACTIVE = 'inactive';
+
+    public function getLabel(): string
+    {
+        return match($this) {
+            self::ACTIVE => 'Account is active',
+            self::INACTIVE => 'Account is inactive',
+        };
+    }
+}
+```
+
+```php
+Status::names();   // ['ACTIVE', 'INACTIVE']
+Status::values();  // ['active', 'inactive']
+Status::options(); // ['active' => 'Account is active', 'inactive' => 'Account is inactive']
+```
+
+### Comparable
+
+| Method         | Description                                                       |
+| -------------- | ----------------------------------------------------------------- |
+| `is($enum)`    | Check if this enum matches the given enum instance or value.      |
+| `isNot($enum)` | Check if this enum does't match the given enum instance or value. |
+
+#### Example
+```php
+enum Status: string
+{
+    use CommitGlobal\Enums\Concerns\Comparable;
+
+    case ACTIVE = 'active';
+    case INACTIVE = 'inactive';
+}
+```
+
+```php
+$status = Status::ACTIVE;
+
+$status->is(Status::ACTIVE);   // true
+$status->is('active');         // true
+$status->is(Status::INACTIVE); // false
+$status->isNot('inactive');    // true
+```
 
 ## Feedback
 
