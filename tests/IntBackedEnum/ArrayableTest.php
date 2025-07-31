@@ -19,7 +19,6 @@ class ArrayableTest extends TestCase
         $this->assertIsArray($names);
         $this->assertCount(5, $names);
         $this->assertSame($expected, $names);
-        $this->assertContainsOnlyString($names);
     }
 
     #[Test]
@@ -31,7 +30,6 @@ class ArrayableTest extends TestCase
         $this->assertIsArray($values);
         $this->assertCount(5, $values);
         $this->assertSame($expected, $values);
-        $this->assertContainsOnlyInt($values);
     }
 
     #[Test]
@@ -49,6 +47,5 @@ class ArrayableTest extends TestCase
         $this->assertIsArray($options);
         $this->assertCount(5, $options);
         $this->assertSame($expected, $options);
-        $this->assertContainsOnlyString($options);
     }
 }
